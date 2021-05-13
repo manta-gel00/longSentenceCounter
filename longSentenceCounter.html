@@ -9,7 +9,7 @@
 <body>
    <h1>Long Sentence Counter</h1>
    <p>Check a text for long sentences.<br>
-    Type the max length of words to check for, and paste the text to check.<br> 
+    Type the max length of words to check for, and write or paste the text to check.<br> 
     The text is not saved or sent anywhere. <br>
     The counter simply counts the words between punctuation marks.</p>
     <h2>Number of words to check for</h2>
@@ -17,8 +17,10 @@
     <h2>Text to check</h2>
     <textarea id=rawText type=text placeholder="Paste text here"></textarea>
     <button onclick="count()">Count!</button>
+    <h2>Results</h2>
     <p id=numberOfLongSentences></p>
     <p id=longSentencesSpec></p>
+    <h2>Breakdown of sentences</h2>
     <p id=highlightedText></p>
 </body>
 </html>
