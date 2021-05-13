@@ -8,11 +8,15 @@
 </head>
 <body>
    <h1>Long Sentence Counter</h1>
-   <p>Paste some text to check if any sentences are longer than 26 words. <br> 
+   <p>Check a text for long sentences.<br>
+    Type the max length of words to check for, and paste the text to check.<br> 
     The text is not saved or sent anywhere. <br>
-    The counter simply counts the words between punctuation marks. Always read any sentences that the counter finds and make your own judgement.</p>
-   <textarea id=rawText>Paste text here</textarea>
-   <button onclick="count()">Count!</button>
+    The counter simply counts the words between punctuation marks.</p>
+    <h2>Number of words in a long sentence</h2>
+    <input id=breakPoint type=number placeholder="26">
+    <h2>Text to check</h2>
+    <textarea id=rawText type=text placeholder="Paste text here"></textarea>
+    <button onclick="count()">Count!</button>
     <p id=numberOfLongSentences></p>
     <p id=longSentencesSpec></p>
 </body>
