@@ -35,7 +35,8 @@ function count() {
                 if (arrayOfWordsLen > breakPoint) {
                     numberOfLongSentences += 1;
                     longSentencesSpec += `<strong>This sentence is ${arrayOfWordsLen} words long:</strong> ${arrayOfSentences[sentence]} <br><br>`;
-                    newText += `<strong>${arrayOfSentences[sentence]}.</strong><br>`
+                    let highlightSentence = arrayOfSentences[sentence];
+                    newText += `<strong>${highlightSentence}.</strong><br>`
                 }
                 else if (arrayOfWordsLen <= breakPoint) {
                     newText += `${arrayOfSentences[sentence]}. <br>`
