@@ -8,23 +8,28 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="longSentenceCounter.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400;700&display=swap" rel="stylesheet">" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-   <h1>Long Sentence Counter</h1>
-   <p>Check a text for long sentences.<br>
-    Type the max length of words to check for, and write or paste the text to check.<br> 
-    The text is not saved or sent anywhere. <br>
-    The counter simply counts the words between punctuation marks.</p>
-    <h2>Number of words to check for</h2>
-    <input id=breakPoint type=number placeholder="26">
-    <h2>Text to check</h2>
-    <textarea id=rawText type=text placeholder="Paste text here"></textarea>
-    <button onclick="count()">Count!</button>
-    <h2>Results</h2>
-    <p id=numberOfLongSentences></p>
-    <p id=longSentencesSpec></p>
-    <h2>Breakdown of sentences</h2>
-    <p id=highlightedText></p>
+    <div id=intro>
+        <h1>Long Sentence Counter</h1>
+        <p>Check a text for long sentences.<br>
+            The counter simply counts the words between punctuation marks, including headings.<br>
+            The text is not saved or sent anywhere.</p>
+    </div>
+    <div id=input>
+        <h2 id=wordNumHeader>Count sentences that are longer than:</h2>
+        <input id=breakPoint type=number placeholder="26"> 
+        <h2>Text to check</h2>
+        <textarea id=rawText type=text placeholder="Input text here"></textarea>
+        <button onclick="count()">Count!</button>
+    </div>
+    <div id=results>
+        <h2 id=resultsHeader></h2>
+        <p id=numberOfLongSentences></p>
+        <p id=longSentencesSpec></p>
+        <h2 id=breakdown></h2>
+        <p id=highlightedText></p>
+    </div>
 </body>
 </html>
