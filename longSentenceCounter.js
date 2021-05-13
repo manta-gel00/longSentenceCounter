@@ -3,10 +3,6 @@ function count() {
 
     //let text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a g'alley of type and scrambled it to make a type specimen book."
 
-    // replace ' and "
-    // let text = rawText.replace('"', ' ')
-    // console.log(text)
-
     // create array from the text
     arrayOfSentences = text.split(".");
 
@@ -32,9 +28,9 @@ function count() {
                 // add information about specific sentences
                 longSentencesSpec += 'This sentence is ' + arrayOfWordsLen + ' words long: ' + arrayOfSentences[sentence] + '. \n';
                 // convert index into string to be able to apply style
-                // let longSentenceString = arrayOfSentences[sentence].toString();
+                //let longSentenceString = arrayOfSentences[sentence].toString();
                 // add with highlight into new text block 
-                // NOT WORKING allSentences += longSentenceString.style.color="red";
+                
             }
 
         }
