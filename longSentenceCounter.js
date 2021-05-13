@@ -1,10 +1,9 @@
 function count() { 
     let text = document.getElementById("rawText").value;
+
     //number of words that defines a long sentence
     let breakPoint = document.getElementById("breakPoint").value;
 
-    //let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est lorem, facilisis eu ipsum vel, semper hendrerit dolor. Quisque malesuada viverra viverra. Sed aliquet erat urna, et eleifend massa elementum at. Proin mollis enim sed elementum malesuada. Curabitur et congue lectus, et ultricies neque. Pellentesque accumsan sapien at imperdiet viverra. Donec faucibus sem massa, vel vehicula libero commodo ac. Proin porta arcu in tellus molestie, at venenatis ante pretium. Aenean congue ligula ac massa mattis, sit amet tincidunt leo imperdiet. Pellentesque consectetur eros id dolor hendrerit, sed scelerisque lectus ullamcorper. Pellentesque dictum scelerisque nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus tempor luctus elementum. Aenean facilisis ullamcorper maximus. Duis pellentesque at dui vel fringilla."
-    
     // create array of sentences, separated by "."
     arrayOfSentences = text.split(".");
 
@@ -12,6 +11,8 @@ function count() {
     function longSentenceCounter() {
         let numberOfLongSentences = 0;
         let longSentencesSpec = "";
+        let newText = "";
+        
         // for every sentence, create an array of words separated by " "
         for (let sentence = 0; sentence < arrayOfSentences.length; sentence++) {
             arrayOfWords = arrayOfSentences[sentence].split(" ");
@@ -21,8 +22,14 @@ function count() {
             if (arrayOfWordsLen > breakPoint) {
                 numberOfLongSentences += 1;
                 longSentencesSpec += `<strong>This sentence is ${arrayOfWordsLen} words long:</strong> ${arrayOfSentences[sentence]} <br><br>`;
+                newText += `<strong>${arrayOfSentences[sentence]}.</strong><br>`
+            }
+            else if (arrayOfWordsLen <= breakPoint) {
+                newText += `${arrayOfSentences[sentence]}. <br>`
             }
         }
+
+        document.getElementById("highlightedText").innerHTML = newText;
         
         // output messages to HTML and console with results
         if (numberOfLongSentences === 0) {
