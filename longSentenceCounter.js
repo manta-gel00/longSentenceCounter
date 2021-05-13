@@ -1,45 +1,41 @@
 function count() { 
- let text = document.getElementById("rawText").value;
+    let text = document.getElementById("rawText").value;
+    //number of words that defines a long sentence
+    let breakPoint = 26
 
-    //let text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a g'alley of type and scrambled it to make a type specimen book."
-
-    // create array from the text
+    //let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec est lorem, facilisis eu ipsum vel, semper hendrerit dolor. Quisque malesuada viverra viverra. Sed aliquet erat urna, et eleifend massa elementum at. Proin mollis enim sed elementum malesuada. Curabitur et congue lectus, et ultricies neque. Pellentesque accumsan sapien at imperdiet viverra. Donec faucibus sem massa, vel vehicula libero commodo ac. Proin porta arcu in tellus molestie, at venenatis ante pretium. Aenean congue ligula ac massa mattis, sit amet tincidunt leo imperdiet. Pellentesque consectetur eros id dolor hendrerit, sed scelerisque lectus ullamcorper. Pellentesque dictum scelerisque nibh. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus tempor luctus elementum. Aenean facilisis ullamcorper maximus. Duis pellentesque at dui vel fringilla."
+    
+    // create array of sentences, separated by "."
     arrayOfSentences = text.split(".");
 
-    // count the words in each sentence
     function longSentenceCounter() {
         let numberOfLongSentences = 0;
         let longSentencesSpec = "";
-        let allSentences = "";
-        //for every sentence, create an array of words (separated by " ")
+        // for every sentence, create an array of words separated by " "
         for (let sentence = 0; sentence < arrayOfSentences.length; sentence++) {
             arrayOfWords = arrayOfSentences[sentence].split(" ");
-            // JavaScript adds an empty index at the end of the array. Removing.
+            // count number of words in each sentence. JavaScript adds an empty index at the end of the array, removing.
             arrayOfWordsLen = arrayOfWords.length -1
-            // add each sentence back to the text
-            
-            // count the words in each sentence and log the contents of any sentence that is longer than 26 words
-            if (arrayOfWordsLen <= 26) {
-                // add unchanged into new text block 
-                allSentences += arrayOfSentences[sentence]; 
-            } else if (arrayOfWordsLen > 26) {
-                // add to total of long sentences
+            // count words in each sentence and add to total number of long sentences
+            if (arrayOfWordsLen > breakPoint) {
                 numberOfLongSentences += 1;
-                // add information about specific sentences
-                longSentencesSpec += 'This sentence is ' + arrayOfWordsLen + ' words long: ' + arrayOfSentences[sentence] + '. \n';
-                // convert index into string to be able to apply style
-                //let longSentenceString = arrayOfSentences[sentence].toString();
-                // add with highlight into new text block 
-                
+                longSentencesSpec += `<strong>This sentence is ${arrayOfWordsLen} words long:</strong> ${arrayOfSentences[sentence]} <br><br>`;
             }
-
         }
-    
-        //console.log('The text contains ' + longSentences + ' sentence(s) with more than 26 words.')
-        document.getElementById("numberOfLongSentences").innerHTML = 'The text contains ' + numberOfLongSentences + ' sentence(s) with more than 26 words.';
-        document.getElementById("longSentencesSpec").innerHTML = longSentencesSpec;
-        document.getElementById("allSentences").innerHTML = allSentences;
+        
+        // output messages to HTML and console with results
+        if (numberOfLongSentences === 0) {
+            console.log(`The counter found 0 long sentences.`)
+            document.getElementById("numberOfLongSentences").innerHTML = `0 sentences are longer than ${breakPoint} words.`;
+        } else if (numberOfLongSentences === 1) {
+            console.log(`The counter found 1 long sentence.`)
+            document.getElementById("numberOfLongSentences").innerHTML = `1 sentence is longer than ${breakPoint} words.`;
+            document.getElementById("longSentencesSpec").innerHTML = longSentencesSpec;
+        } else if (numberOfLongSentences > 1) {
+            console.log(`The counter found ${numberOfLongSentences} long sentences.`)
+            document.getElementById("numberOfLongSentences").innerHTML = `${numberOfLongSentences} sentences are longer than ${breakPoint} words.`;
+            document.getElementById("longSentencesSpec").innerHTML = longSentencesSpec;
+        }
     }
-
     longSentenceCounter();
 }
